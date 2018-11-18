@@ -5,23 +5,24 @@ module RubyAlgorithmKoans
 
     sort_again = true
     while sort_again == true
-      index = 0
       sort_again = false
 
-      while index < array_to_sort.length
+      0.upto(array_to_sort.size - 2) do |index|
         current_val = array_to_sort[index]
         next_val = array_to_sort[index + 1]
 
-        unless next_val.nil?
-
+#        unless next_val.nil?
           if current_val > next_val
             array_to_sort[index] = next_val
             array_to_sort[index + 1] = current_val
             sort_again = true
           end
-        end
+#        end
 
         index += 1
+      puts 
+      puts sort_again
+      puts array_to_sort
       end
     end
 
