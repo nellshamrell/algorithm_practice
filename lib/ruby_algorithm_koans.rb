@@ -107,4 +107,40 @@ module RubyAlgorithmKoans
 
     array
   end
+
+  def self.heap_sort(array)
+    # From http://www.codecodex.com/wiki/Heapsort#Ruby
+    iterator = array.size
+
+    # Moves heap root from array[0] to array[1]
+    shifted_array = [nil] + array             # heap root [0]=>[1]
+
+    (iterator / 2).downto(1) do |i|
+      RubyAlgorithmKoans.down_heap(shifted_array, i, iterator)
+    end
+
+    while iterator > 1
+      shifted_array[1], shifted_array[iterator] = shifted_array[iterator], shifted_array[1]
+      iterator -= 1
+      RubyAlgorithmKoans.down_heap(shifted_array, 1, iterator)
+    end
+
+    # Moves heap root from array[1] back to array[0]
+    shifted_array.drop(1)
+  end
+
+  def self.down_heap(array, parent, limit)
+    puts array.inspect
+    puts
+    node_value = array[parent]
+
+    while (child = 2 * parent) <= limit
+      child += 1 if child < limit and array[child] < array[child + 1]
+      break if node_value >= array[child]
+      array[parent] = array[child]
+      parent = child
+    end
+
+    array[parent] = node_value
+  end
 end

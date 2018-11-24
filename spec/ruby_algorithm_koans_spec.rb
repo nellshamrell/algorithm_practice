@@ -18,4 +18,8 @@ RSpec.describe RubyAlgorithmKoans do
   it "sorts an array of integers using the selection sort" do
     expect(RubyAlgorithmKoans.selection_sort([1, 3, 6, 5, 2, 4])).to eq([1, 2, 3, 4, 5, 6])
   end
+
+  it "sorts an array using the heap sort" do
+    expect(RubyAlgorithmKoans.heap_sort([1, 3, 6, 5, 2, 4])).to eq([1, 2, 3, 4, 5, 6])
+  end
 end
